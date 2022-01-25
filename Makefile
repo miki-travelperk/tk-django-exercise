@@ -9,3 +9,6 @@ migrations:
 
 run:
 	docker-compose up
+
+curl:
+	./curls.sh $(recipeid)

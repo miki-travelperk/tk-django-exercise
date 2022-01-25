@@ -18,6 +18,10 @@ The solution runs containerized with two containers: one for database (postgresq
 
 The API will be available at http://127.0.0.1:8000/recipes [GET, POST, PATCH, DELETE and PUT methods]
 
-## To improve
+### Run batch of curls
 
-Easily the exercise could be extended from the initial specs to add user authentication (using a bearer token on headers thru rest_framework TokenAuthentication on authentication_classes). Add user as a owner (foreign key) of the recipe (and ingredients) and separating Public from Private part in the API (i.e: only allow to list existing recipes if you're not authenticated).
+With the API running (`make run`) is possible to run a quick and dirty test using `curl` to call the API, just use `make curl recipeid=100` passing the desired RECIPE ID to list in detail, change ingredients, change name and finally delete it.
+
+## Possible improvements
+
+Easily the exercise could be extended from the initial specs and requirements to add user authentication (using a bearer token on headers thru rest_framework TokenAuthentication on authentication_classes). Add user as a owner (foreign key) on the recipe (and ingredients) and separating Public from Private part in the API (i.e: only allow to list existing recipes if you're not authenticated but not change and publish anything).

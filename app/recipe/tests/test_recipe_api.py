@@ -27,7 +27,7 @@ def sample_recipe(ingredients=None):
     """creates a sample recipe with two default ingredients or from params"""
     recipe = Recipe.objects.create(
         name='test recipe',
-        description='descriptiont text'
+        description='description text'
     )
 
     if ingredients:

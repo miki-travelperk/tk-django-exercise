@@ -3,7 +3,7 @@ from django.test import TestCase
 from recipe import models
 
 
-def sample_recipe(name='Test Recipe', description='Test Recipe Descriotion'):
+def sample_recipe(name='Test Recipe', description='Test Recipe Description'):
     return models.Recipe.objects.create(name=name, description=description)
 
 
