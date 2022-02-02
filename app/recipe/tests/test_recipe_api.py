@@ -106,13 +106,11 @@ class PublicRecipeApiTests(TestCase):
 
     def test_modify_recipe(self):
         """test modifying parameters of a recipe"""
-        recipe_original = sample_recipe()
+        recipe = sample_recipe()
         payload = sample_payload()
 
-        res = self.client.put(detail_url(recipe_original.id), payload)
-
-        recipe_original.refresh_from_db()
-        recipe = Recipe.objects.get(id=recipe_original.id)
+        res = self.client.put(detail_url(recipe.id), payload)
+        recipe.refresh_from_db()
 
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertEqual(recipe.name, payload['name'])

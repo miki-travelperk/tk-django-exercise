@@ -15,7 +15,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
     permission_classes = ()
 
     def get_queryset(self):
-        """retrieve the recipes for the authenticated user"""
+        """retrieve the recipes"""
         search_name = self.request.query_params.get('name')
         queryset = self.queryset
 

@@ -33,7 +33,7 @@ class ModelsTests(TestCase):
             name='Ingredient 2',
             recipe=recipe
         )
-        tags = models.Ingredient.objects.all()
-        self.assertEqual(len(tags), 2)
-        self.assertIn(ingredient1, tags)
-        self.assertIn(ingredient2, tags)
+        ingredients = models.Ingredient.objects.all()
+        self.assertEqual(len(ingredients), 2)
+        self.assertIn(ingredient1, ingredients)
+        self.assertIn(ingredient2, ingredients)

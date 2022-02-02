@@ -1,33 +1,7 @@
 from django.test import TestCase
 from recipe.models import Ingredient, Recipe
 from recipe.serializers import IngredientSerializer, RecipeSerializer
-
-
-def sample_data():
-    return {
-        'name': 'test recipe',
-        'description': 'description text',
-        'ingredients': [
-                {'name': 'ingredient 1'},
-                {'name': 'ingredient 2'}
-        ],
-    }
-
-
-def sample_recipe(ingredients=None):
-    recipe = Recipe.objects.create(
-        name='test recipe',
-        description='description text'
-    )
-
-    if ingredients:
-        for ingredient in ingredients:
-            recipe.ingredients.create(name=ingredient)
-    else:
-        recipe.ingredients.create(name='ingredient 1')
-        recipe.ingredients.create(name='ingredient 2')
-
-    return recipe
+from recipe.tests.test_recipe_api import sample_payload, sample_recipe
 
 
 class SerializersTests(TestCase):
@@ -56,7 +30,7 @@ class SerializersTests(TestCase):
 
     def test_new_recipe(self):
         """test serializer with new recipe with 3 ingredients"""
-        data = sample_data()
+        data = sample_payload()
         data['ingredients'].append({'name': 'ingredient 3'})
 
         serializer = RecipeSerializer(data=data)
@@ -70,7 +44,7 @@ class SerializersTests(TestCase):
     def test_change_recipe(self):
         """test serializer after changing recipe name"""
         recipe = sample_recipe()
-        data = sample_data()
+        data = sample_payload()
         data['name'] = 'changed name'
 
         serializer = RecipeSerializer(recipe, data=data)
